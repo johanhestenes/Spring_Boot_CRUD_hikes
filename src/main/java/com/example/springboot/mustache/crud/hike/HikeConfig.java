@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.time.Month.JANUARY;
@@ -17,10 +18,13 @@ public class HikeConfig {
         return args -> {
             Hike rb = new Hike("RB", "2.5", "700");
             Hike kc = new Hike("KC", "2", "400");
-
-            repository.saveAll(
-                    List.of(rb, kc)
-            );
+            List<Hike> hikes = new ArrayList<>();
+            hikes.add(rb);
+            hikes.add(kc);
+//            repository.saveAll(
+//                    List.of(rb, kc)
+//            );
+            repository.saveAll(hikes);
         };
     }
 }
