@@ -20,7 +20,7 @@ public class HikeService {
         return hikeRepository.findAll();
     }
 
-    public Hike findById(Long id) {
+    public Hike findHikeById(Long id) {
         return hikeRepository.findById(id).orElse(null);
     }
 
@@ -36,7 +36,7 @@ public class HikeService {
     }
 
     @Transactional
-    public void updateStudent(Long hikeId, String name, String distance, String elevationGain) {
+    public void updateHike(Long hikeId, String name, String distance, String elevationGain) {
         Hike hike = hikeRepository.findById(hikeId)
                 .orElseThrow(() -> new IllegalStateException(
                         "hike with id " + hikeId + " does not exist"

@@ -28,7 +28,7 @@ public class HikeController {
     }
 
     @GetMapping(path = "/delete/{hikeId}")
-    public String deleteStudent(@PathVariable("hikeId") Long hikeId) {
+    public String deleteHike(@PathVariable("hikeId") Long hikeId) {
         hikeService.deleteHike(hikeId);
         return "redirect:/";
     }
@@ -41,7 +41,7 @@ public class HikeController {
 
     @GetMapping("/update/{id}")
     public String updateHikePage(Model model, @PathVariable("id") Long id) {
-        Hike hike = hikeService.findById(id);
+        Hike hike = hikeService.findHikeById(id);
         model.addAttribute("hike", hike);
         model.addAttribute("isUpdate", true);
         return "create-update";
@@ -49,12 +49,12 @@ public class HikeController {
 
     @PostMapping("/update/{id}")
     public String updateHike(@ModelAttribute("hike") Hike hike, @PathVariable("id") Long id) {
-        hikeService.updateStudent(id, hike.getName(), hike.getDistance(), hike.getElevationGain());
+        hikeService.updateHike(id, hike.getName(), hike.getDistance(), hike.getElevationGain());
         return "redirect:/";
     }
 
     @PostMapping("/create")
-    public String createEmployee(@ModelAttribute("hike") Hike hike) {
+    public String createHike(@ModelAttribute("hike") Hike hike) {
         hikeService.addNewHike(hike);
         return "redirect:/";
     }
