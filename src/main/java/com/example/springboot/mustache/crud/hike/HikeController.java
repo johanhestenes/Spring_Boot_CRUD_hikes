@@ -15,12 +15,6 @@ public class HikeController {
         this.hikeService = hikeService;
     }
 
-//    @GetMapping
-//    @ResponseBody
-//    public List<Hike> getHikes(){
-//        return hikeService.getHikes();
-//    }
-
     @GetMapping
     public String getHikes(Model model) {
         model.addAttribute("hikes", hikeService.getHikes());
